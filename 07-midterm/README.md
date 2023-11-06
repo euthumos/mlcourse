@@ -2,23 +2,23 @@
   
 ## **Problem Description**   
    
-The problem is to build a model that can accurately classify patients into two categories: smokers and non-smokers. To achieve this, we're utilizing gradient boosting decision trees from LGBM. Trained machine learning model has been implemented as a web service and deployed on the Google Cloud Platform.
+The problem is to build a model that can accurately classify patients into two categories: smokers and non-smokers. To achieve this, we're utilizing fine-tuned gradient boosting decision trees from LGBM (also, logistic regression and random forest have been considered). Trained model has been implemented as a web service and deployed on the Google Cloud Platform.
 
-The data for this project is sourced from the [Kaggle competition](https://www.kaggle.com/competitions/playground-series-s3e24/overview); it's important to note that it is synthetic data.  
+Smoking detection is a critical public health issue that involves the identification and quantification of exposure to tobacco smoke. The problem is significant because it has a direct impact on the health and well-being of individuals and populations. For example, the paper ["Biomarkers increase detection of active smoking and secondhand smoke exposure in critically ill patients"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3148017/) underscores the utility of biomarkers in improving the accuracy and reliability of smoking detection.
    
-## **Dataset description**    
+## **Dataset description** 
    
-Dataset source: https://www.kaggle.com/competitions/playground-series-s3e24/data 
+The data for this project is sourced from the active [Kaggle competition](https://www.kaggle.com/competitions/playground-series-s3e24/overview) during the project work. It's important to note that data is synthetical.
 
 - train.csv - the training dataset; smoking is the binary target
 - test.csv - the test dataset; your objective is to predict the probability of positive smoking
 - sample_submission.csv - a sample submission file in the correct format
 
-Training dataset contains 159k patient records with biological parameters and smoking status.
+Training dataset contains 159k patient records with biomarkers and smoking status.
 
 Testing dataset contains 106k similar records without smoking status.
 
-22 columns with biological parameters are listed in notebook.ipynb.
+22 columns with biomarkers are listed in notebook.ipynb.
 
 ## **Structure**    
    
@@ -91,7 +91,7 @@ To push the image on GCP repository, you need to input the following commands (a
 <br />
    
 
- You can find the image in the GCP repository. Then use Cloud Run to deploy the image.
+ Now you can find the image in the GCP repository. Then use Cloud Run to deploy the image.
 
 <br />
       
