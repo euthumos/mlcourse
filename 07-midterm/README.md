@@ -100,4 +100,4 @@ And then use Cloud Run to deploy the image.
 
 To test deployed application:
 
-`pipenv python request_cloud.py`
+`pipenv run request_cloud.py`
