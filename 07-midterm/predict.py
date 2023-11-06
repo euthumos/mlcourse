@@ -1,18 +1,12 @@
 import pickle
-
+import pandas as pd
 from flask import Flask
 from flask import request
 from flask import jsonify
-
 from preprocessing import feature_eng
-
-import pandas as pd
-
-
 
 with open('model.pkl', 'rb') as file:
     model = pickle.load(file)
-
 
 app = Flask('prediction')
 
@@ -35,4 +29,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=8080)
-

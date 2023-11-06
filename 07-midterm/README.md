@@ -6,24 +6,6 @@ The problem is to build a model that can accurately classify patients into two c
 
 The data for this project is sourced from the [Kaggle competition](https://www.kaggle.com/competitions/playground-series-s3e24/overview); it's important to note that it is synthetic data.  
    
-## **Structure of the repository**    
-   
-The repository contains the next files and folders:
-* `data/train.csv` - labeled dataset    
-* `data/test.csv` - unlabeled dataset for testing on Kaggle
-* `data/sample_submission.csv` - unlabeled dataset for submition on Kaggle
-* `notebook.ipynb` - notebook with EDA and ML model training    
-* `model.pkl` - saved final GBDT model    
-* `Pipfile` and `Pipfile.lock` - configuration files that specify the project's dependencies 
-* `train.py` - script for model training 
-* `preprocessing.py` - feature engeneering
-* `predict.py` - script for deploying a web service (Flask) using the final model    
-* `Dockerfile` - encapsulating the Flask application within a container.
-* `request_cloud.py` - script for generating predictions using the deployed application on GCP
-* `request_local.py` - script for generating predictions using the deployed application (whether encapsulated in a container or not)   
-* `images` - folder with images  
-* `README.md` - project documentation 
-   
 ## **Dataset description**    
    
 Dataset source: https://www.kaggle.com/competitions/playground-series-s3e24/data 
@@ -37,6 +19,25 @@ Training dataset contains 159k patient records with biological parameters and sm
 Testing dataset contains 106k similar records without smoking status.
 
 22 columns with biological parameters are listed in notebook.ipynb.
+
+## **Structure**    
+   
+The project contains the next files and folders:
+
+* `data/train.csv` - labeled dataset    
+* `data/test.csv` - unlabeled dataset for testing on Kaggle
+* `data/sample_submission.csv` - unlabeled dataset for submition on Kaggle
+* `notebook.ipynb` - notebook with EDA and ML model training    
+* `model.pkl` - saved final GBDT model    
+* `Pipfile` and `Pipfile.lock` - configuration files that specify the project's dependencies 
+* `train.py` - script for model training 
+* `preprocessing.py` - feature engineering
+* `predict.py` - script for deploying a web service (Flask) using the final model    
+* `Dockerfile` - encapsulating the Flask application within a container.
+* `request_cloud.py` - script for generating predictions using the deployed application on GCP
+* `request_local.py` - script for generating predictions using the deployed application (whether encapsulated in a container or not)   
+* `images` - folder with images  
+* `README.md` - project documentation
 
 ## **Environment**   
    
@@ -54,13 +55,13 @@ To activate virtual environment:
  
 
 
-## **Running a web service in a local server**   
+## **Local server deployment**   
       
 The final model has been implemented in a web service, and to run it, the following steps are required:
 
-- Install Docker: Docker can be obtained from the official website at https://www.docker.com/.
+- Install Docker. Docker can be obtained from the official website at https://www.docker.com/.
 
-- Access the Dockerfile: In the current repository or a cloned repository on your local machine, you will find a Dockerfile containing all the specifications required to build the container. This includes Python, the virtual environment, scripts, the model file, and other dependencies.
+- Access the Dockerfile. In the current repository or a cloned repository on your local machine, you will find a Dockerfile containing all the specifications required to build the container. This includes Python, the virtual environment, scripts, the model file, and other dependencies.
 
 - To construct the container, initiate Docker on your system, launch a terminal or command window and input the following command:
    
@@ -75,16 +76,22 @@ Run a script `request_local.py`:
 `pipenv run request_local.py`   
 
    
-## **Running a web service in a cloud**   
+## **GCP deployment**   
    
 To push the image on GCP repository, you need to input the following commands (after completing all the necessary steps for registration and SDK installation): 
       
 `docker tag proj_smoking gcr.io/axiomatic-skill-404020/smoke_proj_repo`  (axiomatic-skill-404020 is GCP project id)
    
-`docker push gcr.io/axiomatic-skill-404020/smoke_proj_repo`   
+`docker push gcr.io/axiomatic-skill-404020/smoke_proj_repo`
+
+<br />
+      
+<img src="images/repo.png" alt="container_image"/>
+     
+<br />
    
 
-And then use Cloud Run to deploy the image.
+ You can find the image in the GCP repository. Then use Cloud Run to deploy the image.
 
 <br />
       
@@ -92,12 +99,20 @@ And then use Cloud Run to deploy the image.
      
 <br />
 
+Deployed service:
+
 <br />
       
 <img src="images/deployed.png" alt="container_image"/>
      
 <br />   
 
-To test deployed application:
+To invoke a running service, you'll need to put a valid URL in your request_cloud.py script. To test the deployed application, run the following command:
 
 `pipenv run request_cloud.py`
+
+<br />
+      
+<img src="images/200.png" alt="container_image"/>
+     
+<br />  
