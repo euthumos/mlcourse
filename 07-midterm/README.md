@@ -79,7 +79,7 @@ Run a script `request_local.py`:
    
 To push the image on GCP repository, you need to input the following commands (after completing all the necessary steps for registration and SDK installation): 
       
-`docker tag proj_smoking gcr.io/axiomatic-skill-404020/smoke_proj_repo`  #axiomatic-skill-404020 is GCP project id
+`docker tag proj_smoking gcr.io/axiomatic-skill-404020/smoke_proj_repo`  (axiomatic-skill-404020 is GCP project id)
    
 `docker push gcr.io/axiomatic-skill-404020/smoke_proj_repo`   
    
