@@ -35,9 +35,7 @@ The project contains the next files and folders:
 * `predict.py` - script for deploying a web service (Flask) using the final model    
 * `Dockerfile` - encapsulating the Flask application within a container.
 * `request_cloud.py` - script for generating predictions using the deployed application on GCP
-* `request_local.py` - script for generating predictions using the deployed application (whether encapsulated in a container or not)   
-* `images` - folder with images  
-* `README.md` - project documentation
+* `request_local.py` - script for generating predictions using the locally deployed application
 
 ## **Environment**   
    
@@ -107,12 +105,14 @@ Deployed service:
      
 <br />   
 
-To invoke a running service, you'll need to put a valid URL in your request_cloud.py script. To test the deployed application, run the following command:
-
-`pipenv run request_cloud.py`
+To invoke a running service, you'll need to put a valid URL in your request_cloud.py script. 
 
 <br />
       
 <img src="images/200.png" alt="container_image"/>
      
 <br />  
+
+To test the deployed application, run the following command:
+
+`pipenv run request_cloud.py`
